@@ -15,8 +15,7 @@ class QuestionsController < ApplicationController
       @folder = Folder.find(params[:question][:folder_id])
     end
     @question.folder = @folder
-    @answer = Answer.new(description: params[:question][:answer], source: params[:question][:source])
-    @answer.question_id = @question.id
+    @answer = Answer.new(description: params[:question][:answer], source: params[:question][:source], question_id: @question.id)
     @question.answer = @answer
     if @question.save!
       redirect_to folders_path

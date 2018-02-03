@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :folders
   resources :questions do
-    resources :answers
+    resources :answers, except: "show"
   end
   # get 'answer/new'
 

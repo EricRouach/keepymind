@@ -3,7 +3,7 @@
 <h3>Start test</h3>
 <% unless @folder.questions.empty? %>
 <% @folder.questions.each do |question| %>
-<%= question.description %>
+<%= link_to question.description, question_answers_path(question.id) %>
 <%= link_to "Edit", edit_question_path(question.id) %>
 <%= link_to "Delete", question_path(question.id), method: :delete %>
 <% end %>

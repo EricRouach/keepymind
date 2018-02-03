@@ -1,4 +1,9 @@
 class AnswersController < ApplicationController
+
+  def index
+    @answer = Answer.find_by(question_id: params[:question_id])
+  end
+
   def new
   end
 
@@ -9,9 +14,6 @@ class AnswersController < ApplicationController
   end
 
   def update
-  end
-
-  def show
   end
 
   def destroy
