@@ -1,2 +1,9 @@
-<h1>Question#edit</h1>
-<p>Find me in app/views/question/edit.html.erb</p>
+<h1>Edit question "<%= @question.description%>"</h1>
+<%= simple_form_for(@question) do |f| %>
+<%= f.error_notification %>
+<%=  f.input :description, placeholder: "Faust Legend" %>
+<%= f.select(:folder_id,  options_from_collection_for_select(@folders, :id, :name), :prompt => "Select folder (optional)")%>
+<%= f.input :answer, placeholder: "Faust is the protagonist of a classic German legend, based on the historical Johann Georg Faust"%>
+<%= f.input :source, placeholder: "Wikipedia (optional)"%>
+<%= f.button :submit, class: "btn-success"%>
+<% end %>

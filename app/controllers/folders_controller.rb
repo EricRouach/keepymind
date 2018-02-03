@@ -2,7 +2,8 @@ class FoldersController < ApplicationController
   before_action :set_folder, only: %i[show edit update destroy]
 
   def index
-    @folders = Folder.where(user_id: current_user.id)
+    @folders = Folder.where(user_id: current_user.id, loose: "false")
+    @loose_folder = Folder.find_by(user_id: current_user.id, loose: "true")
   end
 
   def new
@@ -40,7 +41,7 @@ class FoldersController < ApplicationController
 
   private
 
-    def set_folder
+  def set_folder
     @folder = Folder.find(params[:id])
   end
 
