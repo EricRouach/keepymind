@@ -136,3 +136,428 @@ Migrating to CreateAnswers (20180203164532)
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4748697350918552745)[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-02-03 17:53:35 +0100
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (0.8ms)
+  Rendered shared/_navbar.html.erb (4.2ms)
+  Rendered shared/_flashes.html.erb (0.8ms)
+Completed 200 OK in 59ms (Views: 54.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-02-03 17:54:12 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.4ms)
+  Rendered shared/_navbar.html.erb (2.9ms)
+  Rendered shared/_flashes.html.erb (0.8ms)
+Completed 200 OK in 87ms (Views: 62.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-02-03 17:54:15 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.5ms)
+  Rendered shared/_navbar.html.erb (3.2ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 70ms (Views: 68.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-02-03 17:54:26 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uG6ZuFncYRUcuICZzkVohb/l4EkVkfyD5oHnnYQLErMOK/xe5UxdI4olhooqG2OA9ZH4JI7QJDz2VEByhlLmfw==", "user"=>{"email"=>"erouach3@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "erouach3@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "erouach3@gmail.com"], ["encrypted_password", "$2a$11$T2sqpWCy8Da6AhgTrsImpuzkHda.f/pN4ElxKQVLzaK8ebtLSXEyi"], ["created_at", "2018-02-03 16:54:26.618924"], ["updated_at", "2018-02-03 16:54:26.618924"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-02-03 16:54:26.629201"], ["last_sign_in_at", "2018-02-03 16:54:26.629201"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2018-02-03 16:54:26.631168"], ["id", 1]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 188ms (ActiveRecord: 15.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-03 17:54:26 +0100
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/folders
+Completed 302 Found in 10ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 17:54:26 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  Rendered folders/index.html.erb within layouts/application (0.4ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 55ms (Views: 50.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 17:57:30 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.7ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (2.2ms)
+  Rendered shared/_navbar.html.erb (3.0ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+Completed 200 OK in 88ms (Views: 45.2ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/folders/new" for 127.0.0.1 at 2018-02-03 17:57:33 +0100
+Processing by FoldersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/new.html.erb within layouts/application
+  Rendered folders/new.html.erb within layouts/application (0.4ms)
+  Rendered shared/_navbar.html.erb (2.9ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 47ms (Views: 41.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:00:43 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.3ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 401 Unauthorized in 38ms (ActiveRecord: 6.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Folder with 'id'=):
+  
+app/controllers/folders_controller.rb:36:in `set_folder'
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:01:11 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.4ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (1.7ms)
+  Rendered shared/_navbar.html.erb (3.1ms)
+  Rendered shared/_flashes.html.erb (0.9ms)
+Completed 200 OK in 72ms (Views: 42.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:02:26 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.4ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (1.7ms)
+  Rendered shared/_navbar.html.erb (2.2ms)
+  Rendered shared/_flashes.html.erb (0.3ms)
+Completed 200 OK in 40ms (Views: 36.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/folders/new" for 127.0.0.1 at 2018-02-03 18:02:27 +0100
+Processing by FoldersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/new.html.erb within layouts/application
+  Rendered folders/new.html.erb within layouts/application (3.8ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 54ms (Views: 44.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/folders/new" for 127.0.0.1 at 2018-02-03 18:02:46 +0100
+Processing by FoldersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/new.html.erb within layouts/application
+  Rendered folders/new.html.erb within layouts/application (3.8ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 80ms (Views: 44.5ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/folders" for 127.0.0.1 at 2018-02-03 18:02:54 +0100
+Processing by FoldersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Vt12hmPGuy81E4YXIIQOoFFRxc1qeNAA3AK+Xfg6bVvgmBNg31aHGaOOgATE2gWlGyXdoPE5CL/M1xmy+mOZlw==", "folder"=>{"name"=>"History"}, "commit"=>"Create Folder"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/folders/new
+Completed 302 Found in 13ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/folders/new" for 127.0.0.1 at 2018-02-03 18:02:54 +0100
+Processing by FoldersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/new.html.erb within layouts/application
+  Rendered folders/new.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (2.7ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+Completed 200 OK in 49ms (Views: 44.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/folders/new" for 127.0.0.1 at 2018-02-03 18:03:06 +0100
+Processing by FoldersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/new.html.erb within layouts/application
+  Rendered folders/new.html.erb within layouts/application (4.8ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+Completed 200 OK in 75ms (Views: 43.2ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/folders" for 127.0.0.1 at 2018-02-03 18:03:09 +0100
+Processing by FoldersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qmYO4fr3kJ7AVE8nbEmcvYpeuhP9vcz7HSJ1R2EZaBscI2sHRmesqFbJSTSIF5e4wCqifmb8FEQN99KoY0Cc1w==", "folder"=>{"name"=>"History"}, "commit"=>"Create Folder"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: User must exist):
+  
+app/controllers/folders_controller.rb:14:in `create'
+Started GET "/folders/new" for 127.0.0.1 at 2018-02-03 18:03:28 +0100
+Processing by FoldersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/new.html.erb within layouts/application
+  Rendered folders/new.html.erb within layouts/application (3.5ms)
+  Rendered shared/_navbar.html.erb (2.5ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 76ms (Views: 41.9ms | ActiveRecord: 5.9ms)
+
+
+Started POST "/folders" for 127.0.0.1 at 2018-02-03 18:03:33 +0100
+Processing by FoldersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qBRaDQfltDLDIQ3Nu8Relbwqy8hNa02LrO+JQVFLIxIeUT/ru3WIBFW8C95fmlWQ9l7TpdYqlTS8Oi6uUxLX3g==", "folder"=>{"name"=>"History"}, "commit"=>"Create Folder"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.9ms)[0m  [1m[32mINSERT INTO "folders" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "History"], ["user_id", 1], ["created_at", "2018-02-03 17:03:33.018737"], ["updated_at", "2018-02-03 17:03:33.018737"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/folders
+Completed 302 Found in 20ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:03:33 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.4ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (1.7ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+Completed 200 OK in 43ms (Views: 38.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/folders/new" for 127.0.0.1 at 2018-02-03 18:03:39 +0100
+Processing by FoldersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/new.html.erb within layouts/application
+  Rendered folders/new.html.erb within layouts/application (3.1ms)
+  Rendered shared/_navbar.html.erb (2.1ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+Completed 200 OK in 43ms (Views: 38.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/folders" for 127.0.0.1 at 2018-02-03 18:03:45 +0100
+Processing by FoldersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Cs8C757Of2IzjKvtiCoaSTQfd+/hjV6jxeozc6lVHM+8imcJIl5DVKURrf5sdBFMfmtvgnrMhhzVP5ScqwzoAw==", "folder"=>{"name"=>"Sofie"}, "commit"=>"Create Folder"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "folders" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sofie"], ["user_id", 1], ["created_at", "2018-02-03 17:03:45.143660"], ["updated_at", "2018-02-03 17:03:45.143660"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/folders
+Completed 302 Found in 12ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:03:45 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.5ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (2.0ms)
+  Rendered shared/_navbar.html.erb (3.7ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+Completed 200 OK in 44ms (Views: 39.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:04:35 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.4ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (2.1ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+Completed 200 OK in 43ms (Views: 37.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:04:41 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.5ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (2.3ms)
+  Rendered shared/_navbar.html.erb (2.9ms)
+  Rendered shared/_flashes.html.erb (0.7ms)
+Completed 200 OK in 44ms (Views: 39.0ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/folders/2" for 127.0.0.1 at 2018-02-03 18:04:44 +0100
+Processing by FoldersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"VirFetJFrGcEp6PkxPHXvsBBuhYEvdKVv47rbvBFvGTgb6CcbtWQUZI6pfcgr9y7ijWie5/8CiqvW0yB8hxIqA==", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.2ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering folders/destroy.html.erb within layouts/application
+  Rendered folders/destroy.html.erb within layouts/application (0.5ms)
+  Rendered shared/_navbar.html.erb (3.1ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/folders/2/edit" for 127.0.0.1 at 2018-02-03 18:04:47 +0100
+Processing by FoldersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.3ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering folders/edit.html.erb within layouts/application
+  Rendered folders/edit.html.erb within layouts/application (0.4ms)
+  Rendered shared/_navbar.html.erb (3.4ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:06:00 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.3ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (10.1ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_flashes.html.erb (0.7ms)
+Completed 200 OK in 76ms (Views: 46.8ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/folders/1/edit" for 127.0.0.1 at 2018-02-03 18:06:03 +0100
+Processing by FoldersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.5ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/edit.html.erb within layouts/application
+  Rendered folders/edit.html.erb within layouts/application (3.6ms)
+  Rendered shared/_navbar.html.erb (3.3ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+Completed 200 OK in 47ms (Views: 41.6ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/folders/1" for 127.0.0.1 at 2018-02-03 18:06:10 +0100
+Processing by FoldersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+QUn0JSZI7VlQzpoVOiRDbzohFtGlYdCP2x4A53VnNNPQEI2KAkfg/PePHuwtpoI9pycNt3UX/0vud/sn4xoHw==", "folder"=>{"name"=>"History & philosophy"}, "commit"=>"Update Folder", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.2ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/update.html.erb within layouts/application
+  Rendered folders/update.html.erb within layouts/application (0.4ms)
+  Rendered shared/_navbar.html.erb (3.6ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 43ms (Views: 37.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-03 18:07:17 +0100
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/folders
+Completed 302 Found in 19ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:07:17 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.3ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (7.6ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+Completed 200 OK in 51ms (Views: 40.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/folders/1/edit" for 127.0.0.1 at 2018-02-03 18:07:19 +0100
+Processing by FoldersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.2ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/edit.html.erb within layouts/application
+  Rendered folders/edit.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+Completed 200 OK in 46ms (Views: 40.5ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/folders/1" for 127.0.0.1 at 2018-02-03 18:07:22 +0100
+Processing by FoldersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"355t6IUloz7QSNliE6D+DwN9+tlI/PzWFOV1J4Tmrq1p2wgOObWfCEbV33H3/vUKSQnitNO9JGkEMNLIhr9aYQ==", "folder"=>{"name"=>"History & philosophy"}, "commit"=>"Update Folder", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.3ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "folders" SET "name" = $1, "updated_at" = $2 WHERE "folders"."id" = $3[0m  [["name", "History & philosophy"], ["updated_at", "2018-02-03 17:07:22.323413"], ["id", 1]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/folders
+Completed 302 Found in 21ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:07:22 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.4ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (2.2ms)
+  Rendered shared/_navbar.html.erb (2.5ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 42ms (Views: 37.1ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/folders/1" for 127.0.0.1 at 2018-02-03 18:07:34 +0100
+Processing by FoldersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"va4nuW9Yl/wIME3ZFXJvjN/axU+o1FjUQ8creGhb0JAL60Jf08iryp6tS8rxLGSJla7dIjOVgGtTEoyXagIkXA==", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.2ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "folders" WHERE "folders"."id" = $1[0m  [["id", 1]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/folders
+Completed 302 Found in 12ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:07:34 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.3ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (1.7ms)
+  Rendered shared/_navbar.html.erb (2.7ms)
+  Rendered shared/_flashes.html.erb (1.9ms)
+Completed 200 OK in 44ms (Views: 39.3ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/folders/2" for 127.0.0.1 at 2018-02-03 18:07:37 +0100
+Processing by FoldersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9O4pNFZ5o4uM5/PlyAHI7zCz/NybWrSxoSqKI9RdBX1Cq0zS6umfvRp69fYsX8PqesfksQAbbA6x/y3M1gTxsQ==", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFolder Load (0.1ms)[0m  [1m[34mSELECT  "folders".* FROM "folders" WHERE "folders"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "folders" WHERE "folders"."id" = $1[0m  [["id", 2]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/folders
+Completed 302 Found in 11ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/folders" for 127.0.0.1 at 2018-02-03 18:07:37 +0100
+Processing by FoldersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering folders/index.html.erb within layouts/application
+  [1m[36mFolder Load (0.3ms)[0m  [1m[34mSELECT "folders".* FROM "folders" WHERE "folders"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered folders/index.html.erb within layouts/application (1.4ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+  Rendered shared/_flashes.html.erb (1.9ms)
+Completed 200 OK in 41ms (Views: 37.0ms | ActiveRecord: 0.6ms)
+
+

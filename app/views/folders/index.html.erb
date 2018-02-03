@@ -1,2 +1,10 @@
-<h1>Folder#index</h1>
-<p>Find me in app/views/folder/index.html.erb</p>
+<h2>Your categories</h2>
+
+<% @folders.each do |folder| %>
+  <%= folder.name %>
+  <%= link_to "Edit", edit_folder_path(folder.id) %>
+  <%= link_to "Delete", folder_path(folder.id), method: :delete %>
+  <br>
+<% end %>
+
+<%= link_to "New Category", new_folder_path %>

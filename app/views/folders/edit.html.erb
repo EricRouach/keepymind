@@ -1,2 +1,8 @@
-<h1>Folder#edit</h1>
-<p>Find me in app/views/folder/edit.html.erb</p>
+<h1>Edit the name of the folder</h1>
+<%= simple_form_for(@folder) do |f| %>
+  <%= f.error_notification %>
+  <%=  f.input :name, placeholder: "History" %>
+  <%= f.button :submit, label: "Book", class: "btn-success"%>
+<% end %>
+
+
