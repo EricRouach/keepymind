@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203163455) do
+ActiveRecord::Schema.define(version: 20180203164532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text "description"
+    t.text "source"
+    t.string "question"
+    t.string "references"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "description"
+    t.string "starred"
+    t.bigint "user_id"
+    t.bigint "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_questions_on_folder_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "ratio"
+    t.bigint "user_id"
+    t.string "question"
+    t.string "references"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_scores_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +70,8 @@ ActiveRecord::Schema.define(version: 20180203163455) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "folders", "users"
+  add_foreign_key "questions", "folders"
+  add_foreign_key "questions", "users"
+  add_foreign_key "scores", "users"
 end

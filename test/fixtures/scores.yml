@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ratio: 1
+  user: one
+  question: MyString
+  references: MyString
+
+two:
+  ratio: 1
+  user: two
+  question: MyString
+  references: MyString
