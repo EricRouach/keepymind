@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[edit update destroy]
+  before_action :set_question, only: %i[edit update destroy show]
 
   def new
     @question = Question.new
@@ -25,11 +25,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
     @folders = Folder.where(user_id: current_user.id, loose: "false")
   end
 
   def update
+    @question.update(question_params)
+    answer = Answer.find_by(question_id: @question.id)
+    answer.description = params[:question][:answer]
+    answer.source = params[:question][:source]
+    answer.save
+    redirect_to question_path(@question.id)
   end
 
   def destroy
@@ -44,6 +53,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:description)
+    params.require(:question).permit(:description, :folder_id)
   end
 end

@@ -1,13 +1,26 @@
 <h2>Your categories</h2>
+<%= link_to "New Category", new_folder_path %>
 
+<br>
 <% @folders.each do |folder| %>
-  <%= link_to folder.name, folder_path(folder) %>
-  <%= link_to "Edit", edit_folder_path(folder.id) %>
-  <%= link_to "Delete", folder_path(folder.id), method: :delete %>
-  <br>
+<%= link_to folder.name, folder_path(folder) %>
+<%= link_to "Edit", edit_folder_path(folder.id) %>
+<%= link_to "Delete", folder_path(folder.id), method: :delete %>
+<br>
 <% end %>
 
-<%= link_to @loose_folder.name, folder_path(@loose_folder.id) %>
 <br>
 
-<%= link_to "New Category", new_folder_path %>
+
+
+<div class="toggle-question-home">
+  <h6>Loose questions</h6>
+  <h6>All questions</h6>
+</div>
+
+<% @loose_questions.each do |question| %>
+<%= link_to question.description, question_path(question.id) %>
+<% end %>
+<br>
+<%= link_to @loose_folder.name, folder_path(@loose_folder.id) %>
+
