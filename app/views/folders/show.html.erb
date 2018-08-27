@@ -1,10 +1,12 @@
 <h1> <%= @folder.name.upcase %></h1>
-<%= link_to "New question", new_question_path %>
-<h3>Start test</h3>
+<%= link_to "New question", new_question_path(folder_id: @folder.id) %>
 <% unless @folder.questions.empty? %>
-<% @folder.questions.each do |question| %>
-<%= question.description %>
-<%= link_to "Edit", edit_question_path(question.id) %>
-<%= link_to "Delete", question_path(question.id), method: :delete %>
-<% end %>
+<ul>
+  <% @folder.questions.each do |question| %>
+  <li><%= question.description %>
+    <%= link_to "Edit", edit_question_path(question.id) %>
+    <%= link_to "Delete", question_path(question.id), method: :delete %>
+  </li>
+  <% end %>
+</ul>
 <% end %>

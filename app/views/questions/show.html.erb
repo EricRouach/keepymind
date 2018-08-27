@@ -2,6 +2,6 @@
 
 <hr>
 
-<%= @question.answer %>
+<%= @question.answers.first.description %>
 
 <%= link_to "Edit", edit_question_path(@question.id) %>

@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     @folders = Folder.where(user_id: current_user.id, loose: "false")
+    @folder_selected = params[:folder_id] unless params[:folder_id].nil?
   end
 
   def create
@@ -17,7 +18,7 @@ class QuestionsController < ApplicationController
     @question.folder = @folder
     @answer = Answer.new(description: params[:question][:answer], source: params[:question][:source])
     @answer.question_id = @question.id
-    @question.answer = @answer
+    @question.answers << @answer
     if @question.save!
       redirect_to folders_path
     else
