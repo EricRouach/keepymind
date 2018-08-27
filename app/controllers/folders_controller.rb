@@ -4,6 +4,7 @@ class FoldersController < ApplicationController
   def index
     @folders = Folder.where(user_id: current_user.id, loose: "false")
     @loose_folder = Folder.find_by(user_id: current_user.id, loose: "true")
+    @loose_questions = Question.joins(:folder).where(folders: {loose: "true"})
   end
 
   def new

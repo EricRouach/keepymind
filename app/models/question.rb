@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :user
   belongs_to :folder
-  has_one :answer
+  has_many :answers
 
   validates :description, presence: true
 
